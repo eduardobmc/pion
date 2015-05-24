@@ -8,6 +8,7 @@ env:
   - LOG_PKG=liblog4cxx10-dev
   - LOG_PKG=liblog4cpp5-dev
   - LOG_CFG=--with-ostream-logging
+  - LOG_CFG=--disable-logging
 
 before_install:
   - sudo apt-get update -qq
