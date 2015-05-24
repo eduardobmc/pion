@@ -3,11 +3,16 @@ language: cpp
 compiler:
   - gcc
 
+env:
+  - LOG_LIB=liblog4cplus-dev
+  - LOG_LIB=liblog4cxx10-dev
+  - LOG_LIB=liblog4cpp5-dev
+
 before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq libboost-all-dev libcurl3-dev liblog4cplus-dev
+  - sudo apt-get install -qq libboost-all-dev libcurl3-dev ${LOG_LIB}
 
 before_script:
   - ./autogen.sh
