@@ -3,19 +3,21 @@ language: cpp
 compiler:
   - gcc
 
-env:
-  - LOG_LIB=liblog4cplus-dev
-  - LOG_LIB=liblog4cxx10-dev
-  - LOG_LIB=liblog4cpp5-dev
+matrix:
+  include:
+    - env: LOG_PKG=liblog4cplus-dev
+    - env: LOG_PKG=liblog4cxx10-dev
+    - env: LOG_PKG=liblog4cpp5-dev
+    - env: LOG_CFG=--with-ostream-logging
 
 before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq libboost-all-dev libcurl3-dev ${LOG_LIB}
+  - sudo apt-get install -qq libboost-all-dev libcurl3-dev ${LOG_PKG}
 
 before_script:
   - ./autogen.sh
 
 script:
-  - ./configure && make -j4 && make -j4 check
+  - ./configure ${LOG_CFG} && make -j4 && make -j4 check
