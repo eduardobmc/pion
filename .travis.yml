@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq libboost-all-dev libcurl3-dev
+  - sudo apt-get install -qq libboost-all-dev libcurl3-dev liblog4cplus-dev
 
 before_script:
   - ./autogen.sh
