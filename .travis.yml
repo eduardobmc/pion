@@ -3,10 +3,14 @@ language: cpp
 compiler:
   - gcc
 
-install:
+before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y -qq libboost-all-dev libcurl3-dev
+
+install:
+  - sudo apt-get install -qq libboost-all-dev libcurl3-dev
+
+before_script:
+  - ./autogen.sh
 
 script:
-  - ./autogen.sh
-  - ./configure --disable-logging && make -j$(nproc) && make check
+  - ./configure && make -j4 && make -j4 check
