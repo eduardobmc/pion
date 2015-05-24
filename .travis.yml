@@ -9,6 +9,4 @@ install:
 
 script:
   - ./autogen.sh
-  - ./configure --disable-logging
-  - make -j$(nproc)
-  - make check
+  - ./configure --disable-logging && make -j$(nproc) && make check
